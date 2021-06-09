@@ -1,3 +1,4 @@
+import java.util.HashMap;
 
 public class TennisGame1 implements TennisGame {
     
@@ -32,28 +33,20 @@ public class TennisGame1 implements TennisGame {
         }
         else
         {
-            for (int i=1; i<3; i++)
-            {
-                if (i==1) tempScore = scorePlayer1;
-                else { score+="-"; tempScore = scorePlayer2;}
-                switch(tempScore)
-                {
-                    case 0:
-                        score+="Love";
-                        break;
-                    case 1:
-                        score+="Fifteen";
-                        break;
-                    case 2:
-                        score+="Thirty";
-                        break;
-                    case 3:
-                        score+="Forty";
-                        break;
-                }
-            }
+            score = getTempResult(score);
         }
         return score;
+    }
+
+    private String getTempResult(String score) {
+        HashMap<Integer, String> nameScore = new HashMap<>();
+        nameScore.put(0, "Love");
+        nameScore.put(1, "Fifteen");
+        nameScore.put(2, "Thirty");
+        nameScore.put(3, "Forty");
+
+        return nameScore.get(scorePlayer1) + "-" + nameScore.get(scorePlayer2);
+        
     }
 
     private String getWinnerOrAdvantage(int minusResult) {
