@@ -12,10 +12,10 @@ public class TennisGame1 implements TennisGame {
     }
 
     public void wonPoint(String playerName) {
-        if (playerName == "player1")
-            scorePlayer1 += 1;
+        if (playerName.equals("player1"))
+            scorePlayer1++;
         else
-            scorePlayer2 += 1;
+            scorePlayer2++;
     }
 
     public String getScore() {
